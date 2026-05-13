@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Data files (keep data/ directory but ignore large files)
+*.csv
+*.xlsx
+*.xls
+*.parquet
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# local data directory
+local_data/*

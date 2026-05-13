@@ -73,3 +73,21 @@ overview = av_loader.get_fundamentals("MSFT")
 fred_loader = create_data_loader("fred")
 macros = fred_loader.get_series("GDP")
 ```
+
+## Exploratory Data Analysis (EDA)
+
+A small EDA demo is available at `examples/eda_demo.py`.
+
+It shows how to:
+
+- load S&P 500 price data using yfinance
+- compute simple returns
+- create a comprehensive overview plot with prices, returns, and cumulative returns in subplots
+- inspect return distribution statistics
+- plot combined histograms and Q-Q plots for distribution analysis
+
+Run the demo with:
+
+```bash
+python examples/eda_demo.py
+```

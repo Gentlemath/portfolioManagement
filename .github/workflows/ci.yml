@@ -30,12 +30,12 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Check Python syntax
-      run: python -m py_compile data/data_loader.py src/__init__.py
+      run: python -m py_compile src/dataloader/data_loader.py src/__init__.py
 
     - name: Lint with flake8 (optional warnings)
       run: |
         pip install flake8
-        flake8 data/ src/ --count --statistics --show-source || true
+        flake8 src/ --count --statistics --show-source || true
 
     - name: Run unit tests (when available)
       run: |

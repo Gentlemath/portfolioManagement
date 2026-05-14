@@ -19,8 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Exploratory Data Analysis (EDA) Module**: Tools for initial data exploration
   - PlotAnalyzer: Price, return, and cumulative return visualization
   - DistributionAnalyzer: Return distribution statistics and plots
-  - TimeSeriesAnalyzer: autocorrelation and stationarity analysis
+  - TimeSeriesAnalyzer: Autocorrelation and stationarity analysis
 - **EDA Demo Script**: `examples/eda_demo.py` demonstrating data loading and analysis
+- **Time Series Modeling (TSM) Module**: Tools for volatility and return modeling
+  - GARCHPredictor: GARCH modeling for log-returns and conditional volatility
+  - ARIMAGARCHPredictor: ARIMA-GARCH modeling for returns and volatility dynamics
+- **TSM Demo Script**: `examples/garch_demo.py` demonstrating GARCH modeling and forecasting
 - **Project Infrastructure**:
   - GitHub Actions CI workflow with Python version matrix testing
   - Environment variable configuration for API keys

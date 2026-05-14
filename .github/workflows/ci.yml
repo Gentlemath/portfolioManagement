@@ -33,6 +33,7 @@ jobs:
       run: |
         python -m py_compile src/dataloader/data_loader.py src/__init__.py
         python -m py_compile src/eda/*.py
+        python -m py_compile src/tsm/*.py
         python -m py_compile examples/*.py
 
     - name: Lint with flake8 (optional warnings)

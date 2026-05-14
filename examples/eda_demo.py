@@ -55,7 +55,7 @@ def main() -> None:
     print("\nInterpretation:")
     print("- ADF very low p-value suggests non-stationarity is rejected.")
     print("- KPSS p-value at or above 0.1 suggests stationarity is not rejected.")
-    print("- Together, these results imply the return series is likely stationary.")
+    print("- Together, these results tell us if the return series is likely stationary.")
 
     print("\n=== ACF and PACF plots of log returns ===")
     tsa.plot_acf_pacf(returns["SP500"], lags=30)

@@ -3,6 +3,7 @@ numpy>=1.24.0
 matplotlib>=3.5.0
 scipy>=1.9.0
 statsmodels>=0.14.0
+arch>=5.0.0
 yfinance>=0.2.0
 alpha_vantage>=2.3.1
 fredapi>=0.4.0

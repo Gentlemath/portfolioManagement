@@ -11,7 +11,7 @@ import yfinance as yf
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from eda import DistributionAnalyzer, PlotAnalyzer
+from eda import DistributionAnalyzer, PlotAnalyzer, TimeSeriesAnalyzer
 
 
 def sp500_example(start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
@@ -23,7 +23,7 @@ def sp500_example(start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
 
 
 def main() -> None:
-    start = pd.Timestamp("2025-05-12")
+    start = pd.Timestamp("2020-05-12")
     end = pd.Timestamp("2026-05-12")
     prices = sp500_example(start, end)
     returns = PlotAnalyzer.compute_returns(prices, method="simple")
@@ -42,6 +42,35 @@ def main() -> None:
 
     DistributionAnalyzer.plot_distribution_overview(returns, bins=40)
 
+
+    # Time series analysis
+    print("\n=== Stationarity tests ===")
+    tsa = TimeSeriesAnalyzer()
+    stationarity_results = tsa.test_stationarity(returns["SP500"])
+
+    print(stationarity_results)
+    if stationarity_results.get('kpss_note'):
+        print(f"Note: {stationarity_results['kpss_note']}")
+
+    print("\nInterpretation:")
+    print("- ADF very low p-value suggests non-stationarity is rejected.")
+    print("- KPSS p-value at or above 0.1 suggests stationarity is not rejected.")
+    print("- Together, these results imply the return series is likely stationary.")
+
+    print("\n=== ACF and PACF plots of log returns ===")
+    tsa.plot_acf_pacf(returns["SP500"], lags=30)
+
+    # Test for significant autocorrelation
+    autocorr_results = tsa.test_autocorrelation(returns["SP500"], lags=30, alpha = 0.01)
+    print(f"\nSignificant ACF lags (alpha={autocorr_results['alpha']}): {autocorr_results['acf_significant_lags']}")
+    print(f"Significant PACF lags (alpha={autocorr_results['alpha']}): {autocorr_results['pacf_significant_lags']}")
+
+    print("\n=== ACF and PACF plots of absolute log returns ===")
+    tsa.plot_acf_pacf(returns["SP500"].abs(), lags=30)
+
+    autocorr_abs_results = tsa.test_autocorrelation(returns["SP500"].abs(), lags=30)
+    print(f"\nSignificant ACF lags for absolute returns (alpha={autocorr_abs_results['alpha']}): {autocorr_abs_results['acf_significant_lags']}")
+    print(f"Significant PACF lags for absolute returns (alpha={autocorr_abs_results['alpha']}): {autocorr_abs_results['pacf_significant_lags']}")
 
 if __name__ == "__main__":
     main()

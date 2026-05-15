@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - DistributionAnalyzer: Return distribution statistics and plots
   - TimeSeriesAnalyzer: Autocorrelation and stationarity analysis
 - **EDA Demo Script**: `examples/eda_demo.py` demonstrating data loading and analysis
+- **Time Series Regime Detector**: Tools for detecting regime change
+  - RegimeDetector
+- **Regime Detector Demo Script**: `examples/regime_change_demo.py`
 - **Time Series Modeling (TSM) Module**: Tools for volatility and return modeling
   - GARCHPredictor: GARCH modeling for log-returns and conditional volatility
   - ARIMAGARCHPredictor: ARIMA-GARCH modeling for returns and volatility dynamics
